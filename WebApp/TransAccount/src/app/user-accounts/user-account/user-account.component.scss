@@ -1,0 +1,38 @@
+.mask-arrow-down{
+    mask: url("/assets/images/chevron-right.svg");
+    display: inline-block;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    height: 20px;
+    width: 20px;
+    background-color: black ;
+}
+.mask-account{
+    mask: url("/assets/images/account-icon.svg");
+    display: inline-block;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    height: 20px;
+    width: 20px;
+    background-color: black ;
+}
+
+.account{
+    background-color: lightgray;
+    width: 500px;
+    height: 100px;
+    color: black;
+    font-family: "font-regular", "font-regular-arabic", sans-serif;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    padding :5px;
+    border: 1px solid;
+    margin-bottom: 5px;
+}
+.expand{
+    background-color: transparent;
+    border: none;
+}

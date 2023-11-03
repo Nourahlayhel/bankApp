@@ -1,0 +1,3 @@
+<select>
+    <option [title]="c.code" *ngFor="let c of currencySource" (select)="selectCurrency(c)"> {{c.symbol}}</option>
+</select>
