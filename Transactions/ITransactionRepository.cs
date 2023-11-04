@@ -6,6 +6,6 @@ namespace TransAccount.Transactions
     {
         Task ExecuteTransaction(Transaction transaction);
         Task<List<TransactionTypeModel>> GetTransactionTypes();
-        Task<int> GetTransactionTypeIdByName(Database.TransactionType name);
+        Task<int?> GetTransactionTypeIdByName(Database.TransactionType name);
     }
 }

@@ -7,32 +7,27 @@ import { Router } from '@angular/router';
 import { environment } from 'src/enviroment/enviroment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
-private readonly baseUrl = environment.baseUrl+"/user/authenticate"
+  private readonly baseUrl = environment.baseUrl + '/user/authenticate';
   constructor(
-    private appService : AppService, 
-    private httpClient : HttpClient,
-    private router : Router
-    ) { }
- 
+    private appService: AppService,
+    private httpClient: HttpClient,
+    private router: Router
+  ) {}
+
   login(user: { email: string; password: string }) {
-    return this.httpClient
-      .post<LoggedInUserDto>(
-        this.baseUrl,
-        user
-      )
-      .pipe(
-        tap((userLogin:any) => {
-          console.log(userLogin);
-          
-          this.appService.setUserInfo(userLogin);
-          this.router.navigateByUrl('/accounts')
-          setTimeout(() => {
-            // this.setGlobalPreferencesOnLogin(userLogin);
-          }, 500);
-        })
-      );
+    return this.httpClient.post<LoggedInUserDto>(this.baseUrl, user).pipe(
+      tap((userLogin: any) => {
+        console.log(userLogin);
+
+        this.appService.setUserInfo(userLogin);
+        this.router.navigateByUrl('/accounts');
+        setTimeout(() => {
+          // this.setGlobalPreferencesOnLogin(userLogin);
+        }, 500);
+      })
+    );
   }
 }

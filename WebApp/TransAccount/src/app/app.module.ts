@@ -6,11 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationGuard } from './authentication.guard';
 import { LoginModule } from './login/login/login.module';
-import { CurrencyDropdownComponent } from './currency-dropdown/currency-dropdown.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

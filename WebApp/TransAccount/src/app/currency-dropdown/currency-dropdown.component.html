@@ -1,3 +1,5 @@
-<select>
-    <option [title]="c.code" *ngFor="let c of currencySource" (select)="selectCurrency(c)"> {{c.symbol}}</option>
-</select>
+<select (change)="selectCurrency($event)">
+    <ng-container *ngFor="let c of currencySource">
+      <option [value]="c.id" [title]="c.code">{{ c.symbol }}</option>
+    </ng-container>
+  </select>

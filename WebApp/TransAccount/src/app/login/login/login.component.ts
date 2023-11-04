@@ -6,16 +6,16 @@ import { LoginService } from '../login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
-  showValidationMessage:boolean = false;
-  
-  constructor(private loginService:LoginService){
+  showValidationMessage: boolean = false;
+
+  constructor(private loginService: LoginService) {
     // this.loginForm = new FormGroup({
     //   email: new FormControl('', Validators.required),
     //   password: new FormControl('', Validators.required),
@@ -30,11 +30,10 @@ export class LoginComponent {
         .subscribe({
           error: (error: any) => {
             if (error) {
-            this.showValidationMessage = true;
+              this.showValidationMessage = true;
             }
           },
         });
     }
   }
-
 }

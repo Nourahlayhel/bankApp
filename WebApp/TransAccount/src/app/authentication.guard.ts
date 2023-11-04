@@ -5,7 +5,6 @@ import { AppService } from './app.service';
 @Injectable({
   providedIn: 'root',
 })
-
 export class AuthenticationGuard implements CanActivate, CanLoad {
   constructor(private appService: AppService) {}
 

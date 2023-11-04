@@ -9,7 +9,8 @@ export class CurrencyDropdownComponent {
 @Input () currencySource:any[]=[]
 @Output() onSelect = new EventEmitter();
 
-selectCurrency(c:any){
-  this.onSelect.emit(c.id)
+selectCurrency($event:any){
+  this.onSelect.emit($event.target.value)
 }
+
 }

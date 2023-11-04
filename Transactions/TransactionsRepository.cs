@@ -26,9 +26,9 @@ namespace TransAccount.Transactions
             return types.Select(t => new TransactionTypeModel(t)).ToList();
         }
 
-        public async Task<int> GetTransactionTypeIdByName(Database.TransactionType name)
+        public async Task<int?> GetTransactionTypeIdByName(Database.TransactionType name)
         {
-            return await this.context.TransactionTypes.Where(t => t.Name == name).Select(t => t.TransactionTypeID).SingleAsync();
+            return await this.context.TransactionTypes.Where(t => t.Name == name).Select(t => t.TransactionTypeID).SingleOrDefaultAsync();
         }
     }
 }

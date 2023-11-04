@@ -6,7 +6,7 @@ namespace TransAccount.Account
     {
         Task<DbAccount> CreateAccount(Account account);
         Task<List<DbAccount>> GetAccountsForUser(int customerId);
-        Task<DbAccount> GetAccountById(int id);
+        Task<DbAccount?> GetAccountById(int id);
         Task UpdateAccountBalance(DbAccount account, int balance);
     }
 }

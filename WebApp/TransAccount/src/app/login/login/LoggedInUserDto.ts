@@ -1,7 +1,7 @@
-export interface LoggedInUserDto{
-userId : number;
-firstName : string;
-lastName : string;
-email : string;
-password : string;
+export interface LoggedInUserDto {
+  userId: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
 }

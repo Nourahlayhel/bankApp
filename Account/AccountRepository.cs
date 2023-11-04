@@ -20,15 +20,14 @@ namespace TransAccount.Account
             await this.context.SaveChangesAsync();
             return dbAccount;
         }
-        public async Task<DbAccount> GetAccountById(int id)
+        public async Task<DbAccount?> GetAccountById(int id)
         {
             return await context.Accounts.Where(acc => acc.AccountID == id).SingleAsync();
         }
 
         public async Task<List<DbAccount>> GetAccountsForUser(int customerId)
         {
-            return await this.context.Accounts.OrderByDescending(acc => acc.CreationDate).Include(acc => acc.User).Include(acc => acc.Transactions).ThenInclude(t => t.TransactionType).ToListAsync();
-           
+            return await this.context.Accounts.Where(acc => acc.CustomerId == customerId).OrderByDescending(acc => acc.AccountID).Include(acc => acc.User).Include(acc => acc.Transactions).ThenInclude(t => t.TransactionType).ToListAsync();        
         }
         
         public async Task UpdateAccountBalance(DbAccount account, int balance)

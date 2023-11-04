@@ -17,26 +17,28 @@ namespace TransAccount.Transactions
 
         public async Task<TransactionDto> AddDepositTransactionToNewAccount(DbAccount createdAccount, int deposit)
         {
-            TransactionDto transactionDto = new ()
+            TransactionDto transactionDto = new()
             {
                 AccountId = createdAccount.AccountID,
                 Amount = deposit,
                 TransactionType = Database.TransactionType.Deposit.ToString(),
-                TransactionTypeId = await this.transactionsRepository.GetTransactionTypeIdByName(Database.TransactionType.Deposit),
+                TransactionTypeId = await this.transactionsRepository.GetTransactionTypeIdByName(Database.TransactionType.Deposit) ?? throw new Exception(),
+                TransactionDate = DateTime.Now,
             };
             await this.ExecuteTransactionOnAccount(createdAccount, transactionDto);
             return transactionDto;
         }
         public async Task ExecuteTransaction(TransactionDto transactionDto)
         {
-            var account = await this.accountRepository.GetAccountById(transactionDto.AccountId);
+            var account = await this.accountRepository.GetAccountById(transactionDto.AccountId) ?? throw new Exception();
+            transactionDto.TransactionDate = DateTime.Now;
             await this.ExecuteTransactionOnAccount(account, transactionDto);
             
         }
 
         public async Task ExecuteTransactionOnAccount(DbAccount account, TransactionDto transactionDto)
         {
-            Transaction trans = new(0, transactionDto.Amount, transactionDto.AccountId, transactionDto.TransactionTypeId, DateTime.Now);
+            Transaction trans = new(0, transactionDto.Amount, transactionDto.AccountId, transactionDto.TransactionTypeId, transactionDto.TransactionDate);
             await this.transactionsRepository.ExecuteTransaction(trans);
             var currentBalance = account.Balance;
             if(transactionDto.TransactionType == Database.TransactionType.Deposit.ToString())
@@ -45,6 +47,11 @@ namespace TransAccount.Transactions
             }
             else
             {
+                if(currentBalance < transactionDto.Amount)
+                {
+                    throw new Exception();
+                }
+
                 currentBalance -= transactionDto.Amount;
             }
             await this.accountRepository.UpdateAccountBalance(account, currentBalance);

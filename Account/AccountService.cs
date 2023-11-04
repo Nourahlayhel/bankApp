@@ -35,7 +35,7 @@ namespace TransAccount.Account
             return accounts.Select(acc => new AccountDto()
             {
                 AccountId = acc.AccountID,
-                Transactions = acc.Transactions.Select(t => new Transactions.TransactionDto() { Amount = t.Amount, TransactionType = t.TransactionType.Name.ToString(), }).ToList(),
+                Transactions = acc.Transactions.Select(t => new Transactions.TransactionDto() { Amount = t.Amount, TransactionType = t.TransactionType.Name.ToString(), TransactionDate = t.TransactionDate }).ToList(),
                 User = new UserModel(acc.User).toDtoModel(),
                 CurrencyId = acc.CurrencyId,
                 Balance = acc.Balance,
