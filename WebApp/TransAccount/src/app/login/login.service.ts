@@ -20,13 +20,8 @@ export class LoginService {
   login(user: { email: string; password: string }) {
     return this.httpClient.post<LoggedInUserDto>(this.baseUrl, user).pipe(
       tap((userLogin: any) => {
-        console.log(userLogin);
-
         this.appService.setUserInfo(userLogin);
         this.router.navigateByUrl('/accounts');
-        setTimeout(() => {
-          // this.setGlobalPreferencesOnLogin(userLogin);
-        }, 500);
       })
     );
   }

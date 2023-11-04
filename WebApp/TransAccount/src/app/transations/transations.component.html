@@ -2,7 +2,7 @@
   <span> Made on {{ t.transactionDate | date }}</span>
   <span> {{ t.transactionType === "Deposit" ? "+" : "-" }} {{ t.amount }}</span>
 </div>
-<div *ngIf="!transactions.length">No transactions made on this account</div>
+<div *ngIf="!transactions?.length">No transactions made on this account</div>
 <div class="new-transaction">
   <span> Add new transaction on account</span>
   <button class="button-add" (click)="toggleForm()">

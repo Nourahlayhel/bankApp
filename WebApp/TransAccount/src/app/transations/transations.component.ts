@@ -57,8 +57,6 @@ export class TransationsComponent implements OnInit {
           amount: this.amount,
           transactionTypeId: this.transactionTypeId,
         };
-        console.log(transactionDto);
-
         this.transactionService.addTransaction(transactionDto);
         this.amount = 0;
         this.onSubmitClick.emit(transactionDto);

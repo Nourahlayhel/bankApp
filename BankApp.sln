@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{1F62F673-3D46-408A-9DE3-5935B9BF8675}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransAccount", "..\TransAccount\TransAccount.csproj", "{5EC3BE6F-FB06-43F4-AA59-9B72D0AB934D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransAccount", "TransAccount.csproj", "{5EC3BE6F-FB06-43F4-AA59-9B72D0AB934D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +18,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{5EC3BE6F-FB06-43F4-AA59-9B72D0AB934D} = {1F62F673-3D46-408A-9DE3-5935B9BF8675}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9476C392-461B-4535-90F1-A4AB54F23377}

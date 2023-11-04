@@ -35,8 +35,6 @@ export class UserAccountsService {
           ).code;
           return acc;
         });
-
-        console.log(this.userAccountsSource.value);
       });
   }
 
